@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/braket}[2026/05/02 Dirac bra-ket notation]
+
+% Required packages
+\RequirePackage{amsmath}
+
+% Basic commands
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \right\rangle \left\langle #2 \right|}
+
+
+% aliases
+\newcommand{\ip}[2]{\braket{#1}{#2}} %Inner product
+\newcommand{\op}[2]{\ketbra{#1}{#2}} % Outer product
+
+% Expectation value
+\newcommand{\expval}[1]{\left\langle #1 \right\rangle}
+\newcommand{\expvalstate}[2]{\left\langle #1 \middle| #2 \middle| #1 \right\rangle}
+
+% Matrix element
+\newcommand{\matrixel}[3]{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}
+
+% Absolute value (useful companion)
+\newcommand{\abs}[1]{\left| #1 \right|}
+
+% Norm
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+% Projection operator
+\newcommand{\proj}[1]{\outer{#1}{#1}}
+
+% Identity operator
+\newcommand{\identity}{\mathbb{I}}
