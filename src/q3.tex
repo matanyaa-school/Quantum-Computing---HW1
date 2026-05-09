@@ -1,0 +1,65 @@
+Let $\ket{\psi} = \sqrt{\frac{1}{6}}(\ket{00}-2\ket{10}+\ket{11})$
+\begin{itemize}
+    \item[a)] Write the state $\ket{\psi}$ in the standard notation (i.e., as a column vector).
+    \item[b)] We measure both the qubits of the state $\ket{\psi}$ in the ${\ket{00},\ket{01},\ket{10},\ket{11}}$ basis.
+    What are the various probabilities of the result?
+    \item[c)] We measure only the right qubit of the state $\ket{\psi}$.
+    What are the probabilities of the outcomes 0 and 1?
+    What is the state of the two qubits after the measurement, given that we measured “0”?
+    Write the result also in the standard notation.
+    \item[d)] What happens to the state if we first apply a Hadamard gate on the left qubit and
+    only then measure the right qubit?
+    Answer the same questions as in section (c).
+\end{itemize}
+% ====== Answer 03 ======
+\subsection*{Answer}
+\begin{itemize}
+    \item[a)]
+        \begin{align*}
+            \ket{\psi} = \sqrt{\frac{1}{6}}\pcvector{1,0,-2,1}
+        \end{align*}
+    \item[b)] Let $\Pi_e$ be the projection operator where $e\in{\ket{00},\ket{01},\ket{10},\ket{11}}$, then:
+        \begin{align*}
+            \pr(00) &= \expval{\Pi_{00}}{\psi} = \braket{00}{\psi}^2 = \left(\sqrt{\frac{1}{6}}\right)^2 = \frac{1}{6}\\
+            \pr(01) &= \expval{\Pi_{01}}{\psi} = \braket{01}{\psi}^2 = 0^2 = 0\\
+            \pr(10) &= \expval{\Pi_{10}}{\psi} = \braket{10}{\psi}^2 = \left(-2\sqrt{\frac{1}{6}}\right)^2 = \frac{4}{6}\\
+            \pr(11) &= \expval{\Pi_{11}}{\psi} = \braket{11}{\psi}^2 = \left(\sqrt{\frac{1}{6}}\right)^2 = \frac{1}{6}\\
+        \end{align*}
+    \item[c)] Let $\Pi_e$ be the projection operator where $e\in{\ket{0},\ket{1}}$ and $I$ the single qubit identity operator, then the probabilities are:
+    \begin{align*}
+        \pr(00\vee10) &= \expval{I\tensor\Pi_0}{\psi} = \braket{00}{\psi}^2 + \braket{10}{\psi}^2= \left(\sqrt{\frac{1}{6}}\right)^2 + \left(-2\sqrt{\frac{1}{6}}\right)^2= \frac{5}{6}\\
+        \pr(01\vee11) &= \expval{I\tensor\Pi_1}{\psi} = \braket{01}{\psi}^2 + \braket{11}{\psi}^2= 0^2 + \left(\sqrt{\frac{1}{6}}\right)^2 = \frac{1}{6}\\
+    \end{align*}
+    The new state is:
+    \begin{align*}
+        I\tensor\Pi_0\ket{\psi} =  \sqrt{\frac{1}{6}}(\ket{00}-2\ket{10})
+    \end{align*}
+    And after normalization:
+    \begin{align*}
+        \frac{\sqrt{\frac{1}{6}}(\ket{00}-2\ket{10})}{\sqrt{\frac{5}{6}}}
+        &=  \sqrt{\frac{1}{5}}(\ket{00}-2\ket{10})\\
+        &= \sqrt{\frac{1}{5}}\pcvector[align=r]{1,0,-2,0}
+    \end{align*}
+    \item[d)] Let $\Pi_e$ be the projection operator where $e\in{\ket{0},\ket{1}}$, $I$ the single qubit identity operator and $H$ the Hadamard operator, then:
+    \begin{align*}
+        \ket{\phi}
+        &= H\tensor I\ket{\psi}\\
+        &= \sqrt{\frac{1}{6}}\frac{1}{\sqrt{2}}((\ket{0}+\ket{1})\tensor\ket{0} - 2(\ket{0}-\ket{1})\tensor\ket{0} + (\ket{0}-\ket{1})\tensor\ket{1})\\
+        &= \sqrt{\frac{1}{12}}(-\ket{00} + 3\ket{10} + \ket{01} - \ket{11})\\
+    \end{align*}
+    Measuring the new state, the probabilities are:
+    \begin{align*}
+        \pr(00\vee10) &= \expval{I\tensor\Pi_0}{\phi} = \braket{00}{\phi}^2 + \braket{10}{\phi}^2= \left(-\sqrt{\frac{1}{12}}\right)^2 + \left(3\sqrt{\frac{1}{12}}\right)^2= \frac{10}{12}\\
+        \pr(01\vee11) &= \expval{I\tensor\Pi_1}{\phi} = \braket{01}{\phi}^2 + \braket{11}{\phi}^2= \left(\sqrt{\frac{1}{12}}\right)^2 + \left(-\sqrt{\frac{1}{12}}\right)^2 = \frac{2}{12}\\
+    \end{align*}
+    The new state is:
+    \begin{align*}
+        I\tensor\Pi_0\ket{\phi} =  \sqrt{\frac{1}{12}}\left(-\ket{00} + 3\ket{10}\right)
+    \end{align*}
+    And after normalization:
+    \begin{align*}
+        \frac{\sqrt{\frac{1}{6}}(-\ket{00}+3\ket{10})}{\sqrt{\frac{10}{12}}}
+        &=  \sqrt{\frac{1}{10}}(-\ket{00}+3\ket{10})\\
+        &= \sqrt{\frac{1}{10}}\pcvector[align=r]{-1,0,3,0}
+    \end{align*}
+\end{itemize}
