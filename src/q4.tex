@@ -1,0 +1,46 @@
+In the lecture, we defined four states:
+\begin{align*}
+    &\ket{\psi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})\\
+    &\ket{\psi^-} = \frac{1}{\sqrt{2}}(\ket{00} - \ket{11})\\
+    &\ket{\phi^+} = \frac{1}{\sqrt{2}}(\ket{01} + \ket{10})\\
+    &\ket{\phi^-} = \frac{1}{\sqrt{2}}(\ket{01} - \ket{10})\\
+\end{align*}
+These states are often called Bell’s basis.
+Suppose Alice holds the left qubit of $\ket{\psi^+}$ and Bob holds the other qubit.
+\begin{itemize}
+    \item[a)] Show how Alice can transform $\ket{\psi^+}$ to the three other states, by acting only on her
+    qubit.
+    \item[b)] We defined the goal of super-dense coding in the last lecture before passover.
+    Explain how to do super-dense coding.
+    In more detail, Alice and Bob share the $\ket{\psi^+}$ state.
+    Alice has a two-bit message $m = (m1, m2)$.
+    Alice is allowed to use their entangled state and send one qubit to Bob.
+    Bob needs to recover $m$.
+    Design such a protocol.
+\end{itemize}
+
+\subsection*{Answer}
+\begin{itemize}
+    \item[a)] The transformation to the other states are as follows:
+    \begin{align*}
+        \ket{\psi^+}\rightarrow\ket{\psi^+}:&\quad I\tensor I\ket{\psi^+}\\
+        \ket{\psi^+}\rightarrow\ket{\psi^-}:&\quad Z\tensor I\ket{\psi^+}\\
+        \ket{\psi^+}\rightarrow\ket{\phi^+}:&\quad X\tensor I\ket{\psi^+}\\
+        \ket{\psi^+}\rightarrow\ket{\phi^-}:&\quad ZX\tensor I\ket{\psi^+}\\
+    \end{align*}
+    Where $X, Z$ are (in the computational basis):
+    \begin{align*}
+        X &= \pantidiagmat{1,1}\\
+        Z &= \pdiagmat{1,-1}\\
+    \end{align*}
+    \item[b)] The protocol is as follows:
+        \begin{itemize}
+            \item[0)] Assume Alice and Bob share the state $\ket{\psi^+}$.
+            This can be done by Alice performing the Hadamard operator on the state $\ket{00}$ and then sending the second qubit to Bob.
+            \item[1)]  Alice wants to send Bob a two bits message (which corresponds to one of the four Bell's basis).
+            She performs a transformation from the original state to the new state using the operators described in the previous section (those operators act only on her qubit and leave Bob's unchanged).
+            \item[2)] Alice sends her altered qubit to Bob which now holds both qubits (i.e.\ the entire state).
+            Bob then performs $CNOT$ and then Hadamard operators which return the qubit from Bell's basis state to the computational state.
+            \item[3)] Bob measures the state and receives the two bit information.
+        \end{itemize}
+\end{itemize}
