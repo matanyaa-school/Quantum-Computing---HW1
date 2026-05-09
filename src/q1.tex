@@ -1,0 +1,65 @@
+% ====== Question 01 ======
+Let $\ket{\psi} = \cos(\pi/8)\ket{0} + \sin(\pi/8)\ket{1}$.
+\begin{itemize}
+    \item[a)] Write the state $\ket{\psi}$ using the standard notation. Write $\bra{\psi}$ using the standard notation.
+    \item[b)] Verify that $\norm{\ket{\psi}}^2 \equiv \braket{\psi}{\psi} = 1$.
+    \item[c)] What is the inner product between $\ket{\psi}$ and $\ket{0}$? What is the angle between $\ket{\psi}$ and $\ket{0}$? (Note: the angle between two vectors $u, v$ is defined as $\arccos( \frac{<u,v>}{\norm{u}\cdot\norm{v}})$)
+    \item[d)] You are given a quantum state which is either $\ket{\psi}$ or $\ket{0}$ uniformly at random.
+    You win if you are able to identify correctly the state that you are given, and you lose otherwise.
+    Calculate the winning probabilities of the following strategies1:
+    \begin{itemize}
+        \item[(a)] Measure the qubit in the computational basis.
+        Answer $'0'$ if the outcome is $'0'$, and answer $'\psi'$ if the outcome is $'1'$.
+        \item[(b)] Apply the Hadamard gate $H = \sqrt{\frac{1}{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}$, and then measure the qubit in the computational basis.2 Answer $'\psi'$ if the outcome is $'0'$, and answer $'0'$ if the outcome is $'1'$.
+    \end{itemize}
+\end{itemize}
+
+% ====== Answer 01 ======
+\subsection*{Answer}\label{subsec:answer-01}
+\begin{itemize}
+    \item[a)] in standard notation $\ket{\psi}$ is $\begin{bmatrix} \cos(\pi/8) \\ \sin(\pi/8) \end{bmatrix}$, and $\bra{\psi}$ is $\begin{bmatrix} \cos(\pi/8) & \sin(\pi/8) \end{bmatrix}$.
+    \item[b)] Let's verify $\norm{\ket{\psi}}^2=1$:\\
+     \begin{equation*}
+         \norm{\ket{\psi}}^2 = \braket{\psi}{\psi} = \begin{bmatrix} \cos(\pi/8) & \sin(\pi/8) \end{bmatrix} \begin{bmatrix} \cos(\pi/8) \\ \sin(\pi/8) \end{bmatrix} = \cos^2(\pi/8) + \sin^2(\pi/8) = 1
+     \end{equation*}
+    \item[c)] The inner product between $\ket{\psi}$ and $\ket{0}$ is:\\
+        \begin{align*}
+            \braket{\psi}{0}
+            &= \cos(\pi/8)\braket{0}{0} + \sin(\pi/8)\braket{0}{1}\\
+            &= \cos(\pi/8)
+        \end{align*}
+        The angle is:
+        \begin{align*}
+                \frac{\braket{\psi}{0}}{\norm{\psi}\norm{0}}
+                &= \frac{\cos(\pi/8)}{\abs{\braket{\psi}{\psi}}^2\cdot\abs{\braket{0}{0}}^2}\\
+                &= \frac{\cos(\pi/8)}{\abs{1}^2\cdot\abs{1^2}}\\
+                &= \cos(\pi/8)
+            \end{align*}
+    \item[d)]
+        \begin{itemize}
+            \item[(a)] Let $\Pi_0$ and $\Pi_1$ be the projection operator for the computational basis, then the probability of winning is:
+            \begin{align*}
+                \pr{win}
+                &= \cpr{win}{\ket{0}}\pr{\ket{0}}+ \cpr{win}{\ket{\psi}}\pr{\ket{\psi}}\\
+                &= \expval{\Pi_0}{0}/2 + \expval{\Pi_1}{\psi}/2\\
+                &= \abs{\braket{0}}^2/2 + \abs{\braket{1}{\psi}}^2/2\\
+                &= (1 + \sin^2(\pi/8))/2 \approx 0.57
+            \end{align*}
+            \item[(b)] Let $\Pi_0$ and $\Pi_1$ be the projection operator for the computational basis, then the probability of winning is:
+            \begin{align*}
+                \pr{win}
+                &= \cpr{win}{\ket{0}}\pr{\ket{0}}+ \cpr{win}{\ket{\psi}}\pr{\ket{\psi}}\\
+                &= \expval{H \Pi_1 H}{0}/2 + \expval{H \Pi_0 H}{\psi}/2\\
+                &= (\bra{0}+\bra{1})\dyad{1}(\ket{0}+\ket{1})/4\\
+                &\quad + ((\cos(\pi/8)+\sin(\pi/8))\bra{0}+(\cos(\pi/8)-\sin(\pi/8))\bra{1})\\
+                &\qquad \dyad{0}\\
+                &\quad (\cos(\pi/8)+\sin(\pi/8))\ket{0}+(\cos(\pi/8)-\sin(\pi/8))\ket{1})/4\\
+                &= \abs{\braket{1}}^2/4 + \abs{(\cos(\pi/8)+\sin(\pi/8))\braket{0}}^2/4\\
+                &= (1 + 1 + 2\cos(\pi/8)\sin(\pi/8))/4\\
+                &= 1/2 + \sin(\pi/4)/4 \approx 0.68
+            \end{align*}
+            We can see that this strategy is better than the previous one.
+        \end{itemize}
+\end{itemize}
+
+% ====== Question 02 ======

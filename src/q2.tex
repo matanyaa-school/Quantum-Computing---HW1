@@ -1,0 +1,57 @@
+% ====== Question 02 ======
+Let $\ket{\alpha} = a\ket{0}+b\ket{1}, \ket{\beta} = c\ket{0}+d\ket{1}$, where $a,b,c,d\in\mathbb{C}$ (Notice that this vector may not be normalized).
+\begin{itemize}
+    \item[a)] Write the state $\ket{\alpha\beta}$ in the ${\ket{00},\ket{01},\ket{10},\ket{11}}$ basis, using both the Dirac notation and the usual matrix notation.
+    \item[b)] Calculate the standard inner product between $\ket{\alpha}$ and $\ket{\beta}$.
+    \item[c)] Calculate the norm of $\ket{\alpha}$ and prove that $\norm{\ket{\alpha\beta}}^2 = \norm{\ket{\alpha}}^2\cdot\norm{\ket{\beta}}^2$.
+    \item[d)] Prove or disprove: Is the state $\ket{\psi}=\sqrt{\frac{1}{3}}\ket{01} + \sqrt{\frac{2}{3}}\ket{10}$ a tensor product state?
+    \item[e)] Same question as previous item, but for the state $\ket{\psi}=\sqrt{\frac{1}{3}}\ket{11} + \sqrt{\frac{2}{3}}\ket{10}$.
+\end{itemize}
+% ====== Answer 02 ======
+\subsection*{Answer}
+\begin{itemize}
+    \item[a)] In Dirac notation:
+        \begin{align*}
+            \ket{\alpha\beta}
+            &= (a\ket{0}+b\ket{1})(c\ket{0}+d\ket{1})\\
+            &= ac\ket{00} + ad\ket{01} + bc\ket{10} + bd\ket{11}
+        \end{align*}
+        In matrix notation:
+        \begin{align*}
+            \ket{\alpha\beta}
+            &= \pcvector{a,b}\tensor\pcvector{c,d}\\
+            &= \pcvector{ac,ad,bc,bd}
+        \end{align*}
+    \item[b)] The inner product is:
+        \begin{align*}
+            \braket{\alpha}{\beta}
+            &= \prvector{a^*,b^*}\pcvector{c,d}\\
+            &= a^*c+b^*d
+        \end{align*}
+    \item[c)] The norm of $\ket{\alpha}$ is:
+        \begin{align*}
+            \norm{\ket{\alpha}}
+            &= \sqrt{\braket{\alpha}}\\
+            &= \sqrt{\prvector{a^*,b^*}\pcvector{a,b}}\\
+            &= \sqrt{\abs{a}^2 + \abs{b}^2}
+        \end{align*}
+        prove that $\norm{\ket{\alpha\beta}}^2 = \norm{\ket{\alpha}}^2\cdot\norm{\ket{\beta}}^2$:
+        \begin{align*}
+            \norm{\ket{\alpha\beta}}^2
+            &= \braket{\alpha\beta}\\
+            &= \braket{\alpha}\braket{\beta}\\
+            &= \norm{\ket{\alpha}}^2\cdot\norm{\ket{\beta}}^2
+        \end{align*}
+    \item[d)] This is not a tensor product state:\\
+        A tensor product state is of the form $\ket{\alpha\beta} = ac\ket{00} + ad\ket{01} + bc\ket{10} + bd\ket{11}$, therefore for $\ket{\psi}$ to be a tensor product state the following must hold:
+        \begin{equation*}
+            \cvector[align=l]{ac = 0,ad = \sqrt{\frac{1}{3}},bc = \sqrt{\frac{2}{3}},bd = 0}
+        \end{equation*}
+        There is no solution for this set of equations since from $ac = 0$ either $a$ or $c$ is $0$ but this contradicts the fact that both $ad$ and $bc$ are not $0$
+    item[e)] This is a tensor product state:\\
+    A tensor product state is of the form $\ket{\alpha\beta} = ac\ket{00} + ad\ket{01} + bc\ket{10} + bd\ket{11}$, therefore for $\ket{\psi}$ to be a tensor product state the following must hold:
+    \begin{equation*}
+        \cvector[align=l]{ac = 0,ad = 0,bc = \sqrt{\frac{2}{3}},bd = \sqrt{\frac{1}{3}}}
+    \end{equation*}
+    a possible solution for this set of equations is: $\smallcvector[align=l]{a = 0,b = 1,c = \sqrt{\frac{2}{3}},d = \sqrt{\frac{1}{3}}}$ and therefore this state is a tensor product state.
+\end{itemize}
